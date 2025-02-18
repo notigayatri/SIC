@@ -1,0 +1,9 @@
+Error handling
+-------------------
+
+1) TypeError: When a value of a specific type is used which shouldn't be.
+Example: 'gayatri' + 200
+can only concatenate str(not 'int') to str
+
+2) NameError: When an undeclared variable is used.
+name 'num' is not defined
