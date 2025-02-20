@@ -4,6 +4,6 @@ def sum_of_even(num):
         if i%2==0 and num[i]%2==0:
             sum+=num[i]
     return sum
-num=[int(i) for i in input("Enter the numbers:").split()]
+num=[int(i) for i in input("Enter the numbers:")]
 print("Sum of odd placed even numbers is", sum_of_even(num))
 
