@@ -38,16 +38,17 @@ class Bst:
             root.left = self.delete_node_recursive(root.left, data)
         elif data > root.data:
             root.right = self.delete_node_recursive(root.right, data)
-        else:
+        else: #Node with only one child or no child
             if root.left is None:
                 return root.right
             elif root.right is None:
                 return root.left
-            temp = root.right
+            # Node with two children
+            temp = root.right 
             while temp.left:
                 temp = temp.left
-            root.data = temp.data
-            root.right = self.delete_node_recursive(root.right, temp.data)
+            root.data = temp.data  # Replace the current node's data with the in-order successor's data
+            root.right = self.delete_node_recursive(root.right, temp.data) # Delete the in-order successor
         return root
 
     def delete_node(self):
