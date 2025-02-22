@@ -17,7 +17,7 @@ def persons_create():
     person_dict = {'id':person.id, 'name':person.name, 'gender':person.gender, 'dob':person.dob, 'location': person.location}
     return jsonify(person_dict)
 
-@app.route('/new_person/<id>',methods=['GET'])
+@app.route('/person/<id>',methods=['GET'])
 def person_read_by_id(id):
     person = persons.search_row(id)
     print(person)
@@ -27,7 +27,7 @@ def person_read_by_id(id):
     person_dict = {'id':person.id, 'name':person.name, 'gender':person.gender, 'dob':person.dob, 'location': person.dob}
     return jsonify(person_dict)
 
-@app.route('/flights',methods=['GET'])
+@app.route('/person',methods=['GET'])
 def persons_read_all():
     persons_list = persons.list_all_rows()
     person_dict = []
