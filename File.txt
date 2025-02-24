@@ -7,3 +7,15 @@ can only concatenate str(not 'int') to str
 
 2) NameError: When an undeclared variable is used.
 name 'num' is not defined
+
+
+
+
+Forest dataset:
+
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("danishjmeo/10-countries-forest-data")
+
+print("Path to dataset files:", path)
