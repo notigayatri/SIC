@@ -183,9 +183,9 @@ def generate_certificate(data, output_dir):
     os.makedirs(output_dir, exist_ok=True)
     
     # Encode images to Base64
-    background_image_base64 = encode_image_to_base64(r"C:\SIC learning\SIC\day6\certificate\bg_1.jpg")
-    org_logo_base64 = encode_image_to_base64(r"C:\SIC learning\SIC\day6\certificate\logo.png")
-    signature_image_base64 = encode_image_to_base64(r"C:\SIC learning\SIC\day6\certificate\sign.jpg")
+    background_image_base64 = encode_image_to_base64(r"C:\Learning\python\SIC\day6\certificate\bg_1.jpg")
+    org_logo_base64 = encode_image_to_base64(r"C:\Learning\python\SIC\day6\certificate\logo.png")
+    signature_image_base64 = encode_image_to_base64(r"C:\Learning\python\SIC\day6\certificate\sign.jpg")
     
     for index, row in data.iterrows():
         name = row['name']
@@ -209,8 +209,8 @@ def generate_certificate(data, output_dir):
 
 # Main function
 if __name__ == "__main__":
-    input_csv = r"C:\SIC learning\SIC\day6\certificate\data.csv"  # Path to CSV file
-    output_directory = r"C:\SIC learning\SIC\day6\html_certificates"  # Output directory
+    input_csv = r"C:\Learning\python\SIC\day6\certificate\data.csv"  # Path to CSV file
+    output_directory = r"C:\Learning\python\SIC\day6\html_certificates"  # Output directory
     
     # Read data and generate certificates
     data = read_csv(input_csv)
