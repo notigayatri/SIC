@@ -211,9 +211,9 @@ def generate_certificates_from_html(input_html_directory, output_directory):
     os.makedirs(output_directory, exist_ok=True)
     
     # Encode images to Base64
-    background_image_base64 = encode_image_to_base64("bg.png")
-    org_logo_base64 = encode_image_to_base64("mtd.png")
-    signature_image_base64 = encode_image_to_base64("my_sign.png")
+    background_image_base64 = encode_image_to_base64("bg_1ng")
+    org_logo_base64 = encode_image_to_base64("logo.png")
+    signature_image_base64 = encode_image_to_base64("sign.jpg")
     
     # Loop through all files in the HTML directory
     for filename in os.listdir(input_html_directory):
@@ -244,7 +244,7 @@ def generate_certificates_from_html(input_html_directory, output_directory):
 # Main function
 if __name__ == "__main__":
     input_html_directory = "D:/final/html_certificates" # Path to the directory with HTML files
-    output_directory = "pdf_certificates"  # Output directory for PDFs
+    output_directory = "output_pdfs"
 
     # Generate certificates from HTML files
     generate_certificates_from_html(input_html_directory, output_directory)
