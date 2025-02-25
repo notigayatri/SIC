@@ -285,19 +285,73 @@ def compare_flight_delays_with_load_factor(df):
     plt.show()
 
 
-# Execute the functions
-plot_ask_vs_passenger_demand(df)
-plot_flight_hours_vs_passengers(df)
-plot_freight_trends(df)
-analyze_flight_kilometers_vs_load_factor(df)
-analyze_total_ton_kilometers(df)
-analyze_freight_months(df)
-plot_flight_departures(df)
-plot_pax_load_vs_seat_kms(df)
-plot_weight_load_factor(df)
-seasonal_pattern_in_cargo(df)
-peak_passenger_traffic(df)
-efficiency_of_tonne_kilometers(df)
-compare_weight_load_factor_with_other_factors(df)
-compare_cargo_vs_passengers(df)
-compare_flight_delays_with_load_factor(df)
+def load_data():
+    df = pd.read_csv('Hackathon/DGCA_DATA.csv')
+    df['Month'] = pd.to_datetime(df['Month'], format='%m/%Y')
+    df = df.sort_values('Month').dropna()
+    return df
+
+def display_menu():
+    print("\nAviation Data Analysis Menu:")
+    print("1. Plot ASK vs Passenger Demand")
+    print("2. Analyze Flight Hours vs Passengers Carried")
+    print("3. Analyze Freight Trends Over Time")
+    print("4. Analyze Flight Kilometers vs Load Factor")
+    print("5. Analyze Total Ton Kilometers")
+    print("6. Analyze Freight Ton Kilometers by Month")
+    print("7. Plot Flight Departures Over Time")
+    print("8. Plot Passenger Load Factor vs Available Seat Kilometers")
+    print("9. Plot Weight Load Factor Over Time")
+    print("10. Analyze Seasonal Patterns in Cargo")
+    print("11. Identify Peak Passenger Traffic Month")
+    print("12. Analyze Efficiency of Available Tonne-Kilometers")
+    print("13. Compare Weight Load Factor with Other Factors")
+    print("14. Compare Cargo vs Passengers Trends")
+    print("15. Compare Flight Delays with Load Factor")
+    print("0. Exit")
+
+def main():
+    df = load_data()
+    while True:
+        display_menu()
+        choice = input("Enter your choice (0-15): ")
+        
+        match choice:
+            case '1':
+                plot_ask_vs_passenger_demand(df)
+            case '2':
+                plot_flight_hours_vs_passengers(df)
+            case '3':
+                plot_freight_trends(df)
+            case '4':
+                analyze_flight_kilometers_vs_load_factor(df)
+            case '5':
+                analyze_total_ton_kilometers(df)
+            case '6':
+                analyze_freight_months(df)
+            case '7':
+                plot_flight_departures(df)
+            case '8':
+                plot_pax_load_vs_seat_kms(df)
+            case '9':
+                plot_weight_load_factor(df)
+            case '10':
+                seasonal_pattern_in_cargo(df)
+            case '11':
+                peak_passenger_traffic(df)
+            case '12':
+                efficiency_of_tonne_kilometers(df)
+            case '13':
+                compare_weight_load_factor_with_other_factors(df)
+            case '14':
+                compare_cargo_vs_passengers(df)
+            case '15':
+                compare_flight_delays_with_load_factor(df)
+            case '0':
+                print("Exiting program.")
+                break
+            case _:
+                print("Invalid choice. Please select a number between 0 and 15.")
+
+if __name__ == "__main__":
+    main()
