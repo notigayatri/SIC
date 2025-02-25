@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -161,7 +160,10 @@ def seasonal_pattern_in_cargo(df):
 def peak_passenger_traffic(df):
     if 'No Carried(P)' in df.columns and 'Month' in df.columns:
         peak_month = df.loc[df['No Carried(P)'].idxmax()]
+        print('*' * 100)
         print(f"Month with Peak Passenger Traffic: {peak_month['Month']}")
+        print('*' * 100)
+
     else:
         print("Error: 'No Carried(P)' or 'Month' column not found. Check dataset.")
 
@@ -180,7 +182,6 @@ def efficiency_of_tonne_kilometers(df):
         plt.show()
     else:
         print("Error: Either 'Avail TONNE KMS (Millions)', 'Total TON KMS Performed', or 'Month' column not found. Check dataset.")
-
 
 def compare_weight_load_factor_with_other_factors(df):
     """
@@ -258,32 +259,34 @@ def compare_cargo_vs_passengers(df):
 def compare_flight_delays_with_load_factor(df):
     """
     Compares trends in Flight Delays with Load Factor over time.
+    If delay data isn't available, only plots Load Factor trends.
     """
-    delay_column = 'Flight Delay (Minutes)'
     load_factor_column = 'Weight Load Factor %'
     time_column = 'Month'
     
-    if not all(col in df.columns for col in [delay_column, load_factor_column, time_column]):
+    # Check if necessary columns exist
+    if load_factor_column not in df.columns or time_column not in df.columns:
         print("Error: Required columns are missing.")
         return
-    
+
+    # Convert the 'Month' column to datetime
     df[time_column] = pd.to_datetime(df[time_column], errors='coerce')
-    df_clean = df.dropna(subset=[delay_column, load_factor_column, time_column])
-    df_resampled = df_clean.groupby(df_clean[time_column].dt.to_period('M')).agg({delay_column: 'mean', load_factor_column: 'mean'})
-    
-    # Plot the trends
+    df_clean = df.dropna(subset=[load_factor_column, time_column])
+
+    # Resample data by month
+    df_resampled = df_clean.groupby(df_clean[time_column].dt.to_period('M')).agg({load_factor_column: 'mean'})
+
+    # Plotting Load Factor
     plt.figure(figsize=(10, 6))
-    plt.plot(df_resampled.index.astype(str), df_resampled[delay_column], label='Flight Delay (Minutes)', color='r')
     plt.plot(df_resampled.index.astype(str), df_resampled[load_factor_column], label='Load Factor (%)', color='b')
-    plt.title('Comparison of Flight Delays and Load Factor Over Time')
+    plt.title('Load Factor Over Time')
     plt.xlabel('Month')
-    plt.ylabel('Values')
+    plt.ylabel('Load Factor (%)')
     plt.xticks(rotation=45)
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
     plt.show()
-
 
 def load_data():
     df = pd.read_csv('Hackathon/DGCA_DATA.csv')
