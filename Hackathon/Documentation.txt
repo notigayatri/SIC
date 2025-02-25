@@ -1,0 +1,65 @@
+DGCA_FLIGHT_TRAFFIC dataset
+--------------------------------------------------------------------------------
+
+The analysis of this aviation dataset provides valuable insights into airline performance, operational efficiency, and industry trends.
+By examining various key metrics such as departures, available seat kilometers (ASK), passenger demand, load factors, cargo transport trends, and ton kilometers, we can better understand airline operations and their impact on profitability and efficiency.
+
+Here's an outline of what this dataset typically encompasses:
+
+> Month: The reporting period (e.g., January, February, etc.).
+> No. Departure (AF): Number of departures (flights) for aircraft.
+> Hours (AF): Total hours flown by aircraft.
+> Kms (Thousands) (AF): Distance flown by aircraft in thousands of kilometers.
+> No Carried (P): Number of passengers carried.
+> Km Performed (Millions) (P): Passenger kilometers performed in millions.
+> Avail Seats Km (Millions): Available seat kilometers in millions, representing airline capacity.
+> PAX Load %: Passenger load factor as a percentage, indicating seat occupancy.
+> Freight CC: Freight cargo capacity.
+> Mail CC: Mail cargo capacity.
+> Total CC: Total cargo capacity (freight + mail).
+> PAX TON KMS Performed: Passenger ton kilometers performed.
+> Freight TON KM Performed: Freight ton kilometers performed.
+> Mail TON KMS Performed: Mail ton kilometers performed.
+> Total TON KMS Performed: Total ton kilometers performed (passenger + freight + mail).
+> Avail TONNE KMS (Millions): Available ton kilometers in millions, indicating overall cargo capacity.
+> Weight Load Factor %: Percentage of total weight capacity utilized.
+
+
+Analysis:
+
+1. Available Seat Kilometers (ASK) vs Passenger Demand
+> Plot Used: Line Plot (ASK vs Passenger Demand over time)
+
+> Key Observations:
+  * ASK (Available Seat Kilometers) represents the total seating capacity multiplied by the distance flown.
+  * Passenger demand (Km Performed) represents actual usage by travelers.
+  * Ideally, ASK should align with demand for efficient airline operations.
+
+> Interpretation:
+  * If ASK is significantly higher than passenger demand, it indicates unused capacity (low load factor), leading to inefficiencies.
+  * If ASK and demand move together, it suggests that airlines optimize seat availability based on demand patterns.
+  * Sudden divergence between the two lines may indicate seasonal variations, demand surges, or external factors like economic changes.
+
+2. Relationship Between Flight Hours and Passengers Carried
+> Plot Used: Scatter Plot + Correlation Matrix
+
+> Key Observations:
+  * The scatter plot examines the relationship between flight hours (Hours (AF)) and passengers carried (No Carried(P)).
+  * The correlation matrix provides a numerical representation of this relationship.
+
+> Interpretation:
+  * A strong positive correlation suggests that as flight hours increase, the number of passengers carried also rises.
+  * A weak or no correlation may indicate operational inefficiencies (e.g., longer flight times but lower passenger loads).
+  * If there are clusters of points, it may suggest specific operational patterns (e.g., short-haul vs long-haul flights).
+
+3. Freight and Mail Transport Fluctuation Over Time
+> Plot Used: Heatmap (Freight transport by year and month)
+
+> Key Observations:
+  * The heatmap visualizes freight transport trends over different months and years.
+  * Darker colors indicate higher freight volumes, while lighter colors indicate lower activity.
+
+> Interpretation:
+  * High freight transport in certain months may correspond to peak trade seasons (e.g., holiday shopping seasons).
+  * Declining freight volumes over time may indicate economic slowdowns or reduced cargo demand.
+  * Identifying low-transport months helps optimize cargo operations and reduce underutilization costs.
